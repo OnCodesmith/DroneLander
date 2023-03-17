@@ -5,12 +5,12 @@ on:
 
   workflow_dispatch:
 
-  release:
-    types: [released]
+  #release:
+  #  types: [released]
  
-    paths-ignore:
-      - '**.md'
-      - '.github/workflows/*.yml'
+  #  paths-ignore:
+  #    - '**.md'
+  #    - '.github/workflows/*.yml'
 
 jobs:
   discover:
