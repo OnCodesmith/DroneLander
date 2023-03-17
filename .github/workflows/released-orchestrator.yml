@@ -1,0 +1,16 @@
+name: Orchestrator
+
+on:
+  release:
+    types: [released]
+
+jobs:
+  other-job:
+    name: Other    
+    runs-on: ubuntu-latest
+    steps:
+    - run: | 
+        echo '${{ github.event_name }}' 
+        echo '${{ github.event.action }}' 
+    
+    
