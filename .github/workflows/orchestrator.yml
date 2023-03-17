@@ -10,14 +10,20 @@ jobs:
     if: github.event_name == 'release' && github.event.action == 'prereleased'
     runs-on: ubuntu-latest
     steps:    
-     - run: echo '${{ toJSON(job) }}'
+     - run: echo '${{ github.event.action }}'
       
   release-job:
     name: Releasing    
     if: github.event_name == 'release' && github.event.action == 'created'
     runs-on: ubuntu-latest
     steps:
-     - run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV 
+     - run: echo '${{ github.event.action }}' 
+  
+  other-job:
+    name: Other    
+    runs-on: ubuntu-latest
+    steps:
+     - run: echo '${{ github.event.action }}' 
       
     
     
