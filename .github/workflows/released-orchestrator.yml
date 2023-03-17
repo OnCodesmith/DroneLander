@@ -1,4 +1,5 @@
 name: Released Orchestrator
+run-name: Released Orchestrator (${{ github.event.action }}) 
 
 on:
   release:
