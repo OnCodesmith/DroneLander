@@ -10,14 +10,14 @@ jobs:
     if: github.event_name == 'release' && github.event.action == 'prereleased'
     runs-on: ubuntu-latest
     steps:    
-     - run: echo ${{ "Prereleasing" }}
+     - run: echo "Prereleasing"
       
   release-job:
     name: Releasing    
     if: github.event_name == 'release' && github.event.action == 'created'
     runs-on: ubuntu-latest
     steps:
-     - run: echo ${{ "Releasing" }}
+     - run: echo "Releasing" 
       
     
     
