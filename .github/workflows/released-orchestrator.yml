@@ -28,9 +28,16 @@ jobs:
       matrix: 
         include: ${{ fromJSON(needs.discover.outputs.release_repos) }}
         steps:
-        - run: | 
-            echo ${{ fromJSON(toJSON(matrix)).repo }}
-            echo ${{ fromJSON(toJSON(matrix)).language }} 
+        - name: Display
+          id: display
+          env:
+            REPO: ${{ fromJSON(toJSON(matrix)).repo }}
+            LANGUAGE: ${{ fromJSON(toJSON(matrix)).language }}
+            PROPERTIES: ${{ join(fromJSON(toJSON(matrix)).properties.*.value, ', ') }}
+          run: |
+            echo "REPO: [$REPO]"
+            echo "LANGUAGE: [$LANGUAGE]"
+            echo "PROPERTIES: [$PROPERTIES]"
  
     
     
