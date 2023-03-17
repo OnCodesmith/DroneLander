@@ -2,9 +2,16 @@ name: Released Orchestrator
 run-name: Released Orchestrator (${{ github.event.action }}) 
 
 on:
+
   workflow_dispatch:
+
   release:
     types: [released]
+    branches-ignore:
+      - '!main'
+    paths-ignore:
+      - '**.md'
+      - '.github/workflows/*.yml'
 
 jobs:
   discover:

@@ -4,8 +4,14 @@ run-name: Unpublished Orchestrator (${{ github.event.action }})
 on:
 
   workflow_dispatch:
+
   release:
     types: [unpublished]
+    branches-ignore:
+      - '!main'
+    paths-ignore:
+      - '**.md'
+      - '.github/workflows/*.yml'
 
 jobs:
   discover:
