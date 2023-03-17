@@ -1,4 +1,4 @@
-name: Orchestrator
+name: Published Orchestrator
 
 on:
   release:
