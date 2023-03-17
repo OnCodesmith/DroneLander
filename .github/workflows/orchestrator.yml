@@ -5,25 +5,26 @@ on:
     types: [created, deleted, edited, prereleased, published, released, unpublished]
 
 jobs:
-  prerelease-job:
-    name: Prereleasing    
-    if: github.event_name == 'release' && github.event.action == 'prereleased'
-    runs-on: ubuntu-latest
-    steps:    
-     - run: echo '${{ github.event.action }}'
+  #prerelease-job:
+  #  name: Prereleasing    
+  #  if: github.event_name == 'release' && github.event.action == 'prereleased'
+  #  runs-on: ubuntu-latest
+  #  steps:    
+  #   - run: echo '${{ github.event.action }}'
       
-  release-job:
-    name: Releasing    
-    if: github.event_name == 'release' && github.event.action == 'created'
-    runs-on: ubuntu-latest
-    steps:
-     - run: echo '${{ github.event.action }}' 
+  #release-job:
+  #  name: Releasing    
+  #  if: github.event_name == 'release' && github.event.action == 'created'
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #  - run: echo '${{ github.event.action }}' 
   
   other-job:
     name: Other    
     runs-on: ubuntu-latest
     steps:
-     - run: echo '${{ github.event.action }}' 
-      
+    - run: | 
+        echo '${{ github.event_name }}' 
+        echo '${{ github.event.action }}' 
     
     
