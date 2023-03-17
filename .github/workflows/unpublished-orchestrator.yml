@@ -2,6 +2,8 @@ name: Unpublished Orchestrator
 run-name: Unpublished Orchestrator (${{ github.event.action }}) 
 
 on:
+
+  workflow_dispatch:
   release:
     types: [unpublished]
 

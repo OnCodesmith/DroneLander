@@ -2,6 +2,7 @@ name: Prereleased Orchestrator
 run-name: Prereleased Orchestrator (${{ github.event.action }}) 
 
 on:
+  workflow_dispatch:
   release:
     types: [prereleased]
 

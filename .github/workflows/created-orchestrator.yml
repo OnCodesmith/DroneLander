@@ -2,6 +2,7 @@ name: Created Orchestrator
 run-name: Created Orchestrator (${{ github.event.action }}) 
 
 on:
+  workflow_dispatch:
   release:
     types: [created]
 

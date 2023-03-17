@@ -2,6 +2,7 @@ name: Deleted Orchestrator
 run-name: Deleted Orchestrator (${{ github.event.action }}) 
 
 on:
+  workflow_dispatch:
   release:
     types: [deleted]
 
