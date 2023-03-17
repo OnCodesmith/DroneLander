@@ -1,0 +1,44 @@
+name: Released Orchestrator
+run-name: Released Orchestrator (${{ github.event.action }}) 
+
+on:
+  workflow_dispatch:
+  release:
+    types: [released]
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+
+    outputs:
+      release_repos: ${{ steps.hydrate.outputs.release_repos }}
+
+    steps:
+    - name: Hydrate
+      id: hydrate
+      env:
+        RELEASE_REPOS: ${{ vars.RELEASE_REPOS }} 
+      run: echo "release_repos=$(jq -r -c . <<< "$RELEASE_REPOS")" >> $GITHUB_OUTPUT
+
+  display:
+    needs: [discover]
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix: 
+        include: ${{ fromJSON(needs.discover.outputs.release_repos) }}
+        steps:
+        - name: Display
+          id: display
+          env:
+            REPO: ${{ fromJSON(toJSON(matrix)).repo }}
+            LANGUAGE: ${{ fromJSON(toJSON(matrix)).language }}
+            PROPERTIES: ${{ join(fromJSON(toJSON(matrix)).properties.*.value, ', ') }}
+          run: |
+            echo "REPO: [$REPO]"
+            echo "LANGUAGE: [$LANGUAGE]"
+            echo "PROPERTIES: [$PROPERTIES]"
+ 
+    
+    
